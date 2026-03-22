@@ -1,24 +1,36 @@
 export default defineNuxtConfig({
+  compatibilityDate: '2026-03-22',
   devtools: { enabled: true },
 
   modules: [
-    '@nuxtjs/tailwindcss',
+    '@nuxt/ui',
     '@vueuse/motion/nuxt',
     '@nuxt/image',
   ],
 
+  css: ['~/assets/css/main.css'],
+
+  // SSG — prerender all pages for Netlify
   nitro: {
     prerender: {
-      routes: ['/']
-    }
+      routes: ['/'],
+      crawlLinks: true,
+    },
   },
 
+  // Google Fonts via head — preconnect for perf
   app: {
     head: {
-      title: 'RAW — améliore le cinéma',
-      meta: [
-        { name: 'description', content: 'Scan et transforme tes tickets de cinéma en collection vérifiée puis partage-les.' }
-      ]
-    }
-  }
+      htmlAttrs: { lang: 'fr' },
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      ],
+    },
+  },
+
+  vite: {
+    optimizeDeps: {
+      include: ['@vue/devtools-core', '@vue/devtools-kit'],
+    },
+  },
 })
