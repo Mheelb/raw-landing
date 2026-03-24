@@ -85,9 +85,10 @@ function focusEmailInput() {
 
     <!-- NAVBAR -->
     <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[#090909]/80 backdrop-blur-md" style="padding-top: env(safe-area-inset-top)">
+      <div class="absolute top-0 left-0 right-0 bg-[#090909]" style="height: env(safe-area-inset-top)" aria-hidden="true" />
       <div class="px-4 sm:px-6 md:px-16 xl:px-32 h-16 flex items-center justify-between gap-3">
-        <NuxtLink to="/" aria-label="RAW — Accueil" class="overflow-hidden flex items-center shrink-0" style="height:36px">
-          <NuxtImg src="/logo.png" alt="RAW" width="200" height="200" format="webp" quality="85" class="w-auto" style="height:200px;margin-top:-82px;margin-bottom:-82px" fetchpriority="high" />
+        <NuxtLink to="/" aria-label="RAW — Accueil" class="overflow-hidden flex items-center shrink-0" style="height:32px">
+          <NuxtImg src="/logo.png" alt="RAW" width="200" height="200" format="webp" quality="85" class="w-auto" style="height:200px;margin-top:-84px;margin-bottom:-84px" fetchpriority="high" />
         </NuxtLink>
         <button type="button" @click="focusEmailInput"
           class="bg-yellow-500 hover:bg-yellow-400 active:scale-[0.97] text-black font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs transition-all cursor-pointer whitespace-nowrap shrink-0">
