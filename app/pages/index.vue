@@ -86,11 +86,11 @@ function focusEmailInput() {
     <main id="main-content">
 
     <!-- NAVBAR -->
-    <header class="fixed top-0 left-0 right-0 z-50">
+    <header class="fixed top-0 left-0 right-0 z-50" style="-webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0);">
       <!-- Zone encoche : fond plein opaque -->
       <div class="bg-[#090909]" style="height: env(safe-area-inset-top)" aria-hidden="true" />
-      <!-- Barre de nav : fond semi-transparent avec blur -->
-      <div class="border-b border-white/[0.06] bg-[#090909]/80 backdrop-blur-md">
+      <!-- Barre de nav : fond opaque -->
+      <div class="border-b border-white/[0.06] bg-[#090909]">
       <div class="px-4 sm:px-6 md:px-16 xl:px-32 h-16 flex items-center justify-between gap-3">
         <NuxtLink to="/" aria-label="RAW — Accueil" class="overflow-hidden flex items-center shrink-0" style="height:32px">
           <NuxtImg src="/logo.png" alt="RAW" width="200" height="200" format="webp" quality="85" class="w-auto" style="height:200px;margin-top:-84px;margin-bottom:-84px" fetchpriority="high" />
