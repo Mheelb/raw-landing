@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+html, body {
+  background-color: #090909;
+}
+
 @theme {
   /* Fonts */
   --font-sans: 'Inter', system-ui, sans-serif;
