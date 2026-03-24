@@ -5,7 +5,9 @@ useSeoMeta({
   ogTitle: 'RAW — Ta collection de cinéma, enfin réelle.',
   ogDescription: 'Scanne ton ticket, prouve que tu étais là. RAW transforme chaque séance en une collection vérifiée, avec XP, niveaux et partage.',
   ogType: 'website',
+  ogImage: 'https://joinraw.fr/og.png',
   twitterCard: 'summary_large_image',
+  twitterImage: 'https://joinraw.fr/og.png',
 })
 
 useHead({
@@ -84,8 +86,11 @@ function focusEmailInput() {
     <main id="main-content">
 
     <!-- NAVBAR -->
-    <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[#090909]/80 backdrop-blur-md" style="padding-top: env(safe-area-inset-top)">
-      <div class="absolute top-0 left-0 right-0 bg-[#090909]" style="height: env(safe-area-inset-top)" aria-hidden="true" />
+    <header class="fixed top-0 left-0 right-0 z-50">
+      <!-- Zone encoche : fond plein opaque -->
+      <div class="bg-[#090909]" style="height: env(safe-area-inset-top)" aria-hidden="true" />
+      <!-- Barre de nav : fond semi-transparent avec blur -->
+      <div class="border-b border-white/[0.06] bg-[#090909]/80 backdrop-blur-md">
       <div class="px-4 sm:px-6 md:px-16 xl:px-32 h-16 flex items-center justify-between gap-3">
         <NuxtLink to="/" aria-label="RAW — Accueil" class="overflow-hidden flex items-center shrink-0" style="height:32px">
           <NuxtImg src="/logo.png" alt="RAW" width="200" height="200" format="webp" quality="85" class="w-auto" style="height:200px;margin-top:-84px;margin-bottom:-84px" fetchpriority="high" />
@@ -94,6 +99,7 @@ function focusEmailInput() {
           class="bg-yellow-500 hover:bg-yellow-400 active:scale-[0.97] text-black font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs transition-all cursor-pointer whitespace-nowrap shrink-0">
           <span class="hidden sm:inline">Rejoindre la </span>bêta →
         </button>
+      </div>
       </div>
     </header>
 
