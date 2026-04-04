@@ -5,7 +5,9 @@ useSeoMeta({
   ogTitle: 'RAW — Ta collection de cinéma, enfin réelle.',
   ogDescription: 'Scanne ton ticket, prouve que tu étais là. RAW transforme chaque séance en une collection vérifiée, avec XP, niveaux et partage.',
   ogType: 'website',
+  ogImage: 'https://joinraw.fr/og.png',
   twitterCard: 'summary_large_image',
+  twitterImage: 'https://joinraw.fr/og.png',
 })
 
 useHead({
@@ -16,7 +18,7 @@ useHead({
       '@type': 'SoftwareApplication',
       name: 'RAW',
       description: 'Application mobile de collection de tickets de cinéma vérifiés, avec gamification et réseau social.',
-      operatingSystem: 'iOS, Android',
+      operatingSystem: 'iOS',
       applicationCategory: 'EntertainmentApplication',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
       url: 'https://joinraw.fr',
@@ -84,20 +86,25 @@ function focusEmailInput() {
     <main id="main-content">
 
     <!-- NAVBAR -->
-    <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[#090909]/80 backdrop-blur-md">
-      <div class="px-6 md:px-16 xl:px-32 h-16 flex items-center justify-between">
-        <a href="/" aria-label="RAW — Accueil" class="overflow-hidden flex items-center" style="height:36px">
-          <NuxtImg src="/logo.png" alt="RAW" width="200" height="200" format="webp" quality="85" class="w-auto" style="height:200px;margin-top:-82px;margin-bottom:-82px" fetchpriority="high" />
-        </a>
+    <header class="fixed top-0 left-0 right-0 z-50" style="-webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0);">
+      <!-- Zone encoche : fond plein opaque -->
+      <div class="bg-[#090909]" style="height: env(safe-area-inset-top)" aria-hidden="true" />
+      <!-- Barre de nav : fond opaque -->
+      <div class="border-b border-white/[0.06] bg-[#090909]">
+      <div class="px-4 sm:px-6 md:px-16 xl:px-32 h-16 flex items-center justify-between gap-3">
+        <NuxtLink to="/" aria-label="RAW — Accueil" class="overflow-hidden flex items-center shrink-0" style="height:32px">
+          <NuxtImg src="/logo.png" alt="RAW" width="200" height="200" format="webp" quality="85" class="w-auto" style="height:200px;margin-top:-84px;margin-bottom:-84px" fetchpriority="high" />
+        </NuxtLink>
         <button type="button" @click="focusEmailInput"
-          class="bg-yellow-500 hover:bg-yellow-400 active:scale-[0.97] text-black font-semibold px-4 py-2 rounded-lg text-xs transition-all cursor-pointer">
-          Rejoindre la bêta →
+          class="bg-yellow-500 hover:bg-yellow-400 active:scale-[0.97] text-black font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs transition-all cursor-pointer whitespace-nowrap shrink-0">
+          <span class="hidden sm:inline">Rejoindre la </span>bêta →
         </button>
+      </div>
       </div>
     </header>
 
     <!-- HERO -->
-    <section class="relative min-h-screen flex items-center px-6 md:px-16 xl:px-32 pt-24 pb-20">
+    <section class="relative min-h-screen flex items-center px-6 md:px-16 xl:px-32 pt-28 sm:pt-24 pb-20" style="padding-top: calc(env(safe-area-inset-top) + 5rem)">
       <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div class="absolute -top-32 -left-24 w-[700px] h-[700px] rounded-full bg-yellow-500/[0.04] blur-[140px]" />
         <div class="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-yellow-500/[0.03] blur-[100px]" />
@@ -146,7 +153,7 @@ function focusEmailInput() {
         </div>
 
         <!-- Ticket card -->
-        <div class="hidden lg:flex items-center justify-center animate-fade-up" style="animation-delay: 0.45s"
+        <div class="flex items-center justify-center animate-fade-up mt-4 lg:mt-0" style="animation-delay: 0.45s"
           aria-hidden="true">
           <div class="relative">
             <div
@@ -200,11 +207,11 @@ function focusEmailInput() {
     <div class="border-y border-white/[0.07] py-4 px-6">
       <div ref="proofEl" :class="proofVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-white/35 text-center transition-all duration-700 ease-out">
-        <span>Rejoins les premiers <strong class="text-white/70">cinéphiles</strong> sur RAW</span>
-        <span class="size-1 rounded-full bg-white/15" aria-hidden="true" />
-        <span>Bêta fermée</span>
+        <span>Bêta fermée · Places limitées</span>
         <span class="size-1 rounded-full bg-white/15" aria-hidden="true" />
         <span>Lancement prévu <strong class="text-white/55">Avril 2026</strong></span>
+        <span class="size-1 rounded-full bg-white/15" aria-hidden="true" />
+        <span>iOS</span>
       </div>
     </div>
 
@@ -329,8 +336,7 @@ function focusEmailInput() {
             <UIcon name="i-lucide-circle-check" class="size-5" />
             <span>Tu es sur la liste. On te contacte bientôt.</span>
           </div>
-          <p v-if="!submitted" class="text-white/50 text-xs text-center">Aucun spam. Désabonnement en un clic. iOS &amp;
-            Android.</p>
+          <p v-if="!submitted" class="text-white/50 text-xs text-center">Aucun spam. Désabonnement en un clic.</p>
         </div>
       </div>
     </section>
@@ -345,19 +351,23 @@ function focusEmailInput() {
           </div>
           <span class="text-white/50 text-xs hidden sm:block">Ta collection de cinéma, enfin réelle.</span>
         </div>
-        <nav class="flex flex-wrap items-center gap-5 text-white/50">
-          <a href="https://www.instagram.com/raw.cine.app" target="_blank" rel="noopener noreferrer"
-            class="hover:text-white/80 transition-colors flex items-center gap-1.5">
-            <UIcon name="i-simple-icons-instagram" class="size-4" />
-            Instagram
-          </a>
-          <a href="https://www.tiktok.com/@raw.cine.app" target="_blank" rel="noopener noreferrer"
-            class="hover:text-white/80 transition-colors flex items-center gap-1.5">
-            <UIcon name="i-simple-icons-tiktok" class="size-4" />
-            TikTok
-          </a>
-          <a href="/mentions-legales" class="hover:text-white/80 transition-colors">Mentions légales</a>
-          <a href="/confidentialite" class="hover:text-white/80 transition-colors">Confidentialité</a>
+        <nav class="flex flex-col items-center gap-3 md:flex-row md:gap-5 text-white/50">
+          <div class="flex items-center gap-5">
+            <NuxtLink to="https://www.instagram.com/raw.cine.app" external target="_blank" rel="noopener noreferrer"
+              class="hover:text-white/80 transition-colors flex items-center gap-1.5">
+              <UIcon name="i-simple-icons-instagram" class="size-4" />
+              Instagram
+            </NuxtLink>
+            <NuxtLink to="https://www.tiktok.com/@raw.cine.app" external target="_blank" rel="noopener noreferrer"
+              class="hover:text-white/80 transition-colors flex items-center gap-1.5">
+              <UIcon name="i-simple-icons-tiktok" class="size-4" />
+              TikTok
+            </NuxtLink>
+          </div>
+          <div class="flex items-center gap-5">
+            <NuxtLink to="/mentions-legales" class="hover:text-white/80 transition-colors">Mentions légales</NuxtLink>
+            <NuxtLink to="/confidentialite" class="hover:text-white/80 transition-colors">Confidentialité</NuxtLink>
+          </div>
         </nav>
         <p class="text-white/50 text-xs">© 2026 RAW. Tous droits réservés.</p>
       </div>
